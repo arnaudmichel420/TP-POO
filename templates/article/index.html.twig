@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Martine voyage | {{post.title}}{% endblock %}
+
+{% block body %}
+
+<section style="background-image:url({{post.img}})" class="heroBanner">
+    <div class="overlay">
+        <h1>{{post.title}}</h1>
+        <div class="line"> </div>
+        <h2>{% for category in post.categories %} {{category.name}} {% endfor %}</h2>
+    </div>
+</section>
+<section class="article">
+    <h2>Par {{post.user.name}} <span>le {{ post.updatedAt|date('d/m/Y') }} :</span></h2>
+    <p>{{post.text}}</p>
+</section>
+<section class="comments">
+<h2>Commentaires :</h2>
+    {% for comment in post.comments %}
+        <div class="comment">{{comment.user.name}} le {{ comment.updatedAt|date('d/m/Y H:i') }} : {{comment.text}}</div>
+    {% endfor %}
+</section>
+{% endblock %}

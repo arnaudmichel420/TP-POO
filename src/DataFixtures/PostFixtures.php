@@ -10,7 +10,6 @@ use App\DataFixtures\CategoryFixtures;
 use App\Entity\Post;
 use App\Repository\UserRepository;
 use App\Repository\CategoryRepository;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class PostFixtures extends Fixture implements DependentFixtureInterface
@@ -42,7 +41,7 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
 
             $post = new Post();
             $post->setTitle("Titre de l'article " . $i);
-            $post->setImg($this->data['photos'][$i - 1]['url']);
+            $post->setImg($this->data['photos'][$i - 1]['src']["original"]);
             $post->setText($i . " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum asperiores tenetur voluptas nobis blanditiis minus perferendis mollitia voluptates, eligendi nemo libero vero excepturi voluptatem numquam a sapiente quibusdam! Dolores.");
             $post->setUser($this->userRepository->findOneByEmail("user" . $i . "@test.com"));
             $post->addCategory($this->categoryRepository->findOneByName("Categorie " . $i));

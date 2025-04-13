@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -15,37 +16,46 @@ class Post
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('post:read')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('post:read')]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('post:read')]
     private ?string $img = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups('post:read')]
     private ?string $text = null;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('post:read')]
     private ?User $user = null;
 
     /**
      * @var Collection<int, Category>
      */
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'posts')]
+    #[Groups('post:read')]
     private Collection $categories;
 
     /**
      * @var Collection<int, Comment>
      */
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'post')]
+    #[Groups('post:read')]
     private Collection $comments;
 
     #[ORM\Column]
+    #[Groups('post:read')]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
+    #[Groups('post:read')]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function __construct()

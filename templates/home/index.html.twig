@@ -1,20 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Martine voyage{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="filter">
+    <select class="select">
+        <option value="default">Filtrer par catégorie</option>
+        {% for category in categories %}
+        <option value="{{ category.id }}">{{category.name}}</option>
+        {% endfor %}
+    </select>
+    <a href="{{ path('app_home')}}">Enlever les filtre</a>
+</section>
+<section class="postSection">
+    {% for post in posts %}
+    <div class="post">
+        <img src="{{ post.img }}" alt="">
+        <div>
+            <h2>{{ post.title }}</h2>
+            <p>Par {{post.user.name}}</p>
+        </div>
+        <div class="line"></div>
+        <p class="articleText">{{post.text}}</p>
+        <a href="{{ path('app_article', { id: post.id }) }}">Voir plus</a>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        
+    </div>
+    {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/arnaud/Documents/Cours/B2/TP-POO/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/Users/arnaud/Documents/Cours/B2/TP-POO/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+
+</section>
+
+<script>
+  document.querySelector('select').addEventListener('change', function () {
+    if (this.value) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('category', this.value);
+      window.location.href = url.toString();
+    }
+  });
+</script>
 {% endblock %}

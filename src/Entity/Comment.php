@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -13,13 +14,16 @@ class Comment
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('post:read')]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups('post:read')]
     private ?string $text = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('post:read')]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
@@ -27,9 +31,11 @@ class Comment
     private ?Post $post = null;
 
     #[ORM\Column]
+    #[Groups('post:read')]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
+    #[Groups('post:read')]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int

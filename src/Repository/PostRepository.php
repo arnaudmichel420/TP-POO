@@ -25,4 +25,13 @@ class PostRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+    public function findAllByCategory(string $category): array
+    {
+        return $this->createQueryBuilder('post')
+            ->join('post.categories', 'category')
+            ->where('category.id = :id')
+            ->setParameter('id', $category)
+            ->getQuery()
+            ->getResult();
+    }
 }
