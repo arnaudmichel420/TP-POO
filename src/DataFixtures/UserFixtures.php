@@ -23,6 +23,7 @@ class UserFixtures extends Fixture
             $user->setName("Bob-" . $i);
             $user->setEmail("user" . $i . "@test.com");
             $user->setPassword($this->passwordHasher->hashPassword($user, "user" . $i));
+            $user->setRoles(['ROLE_USER']);
 
             $manager->persist($user);
         }

@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+:root {
+  --blue: #18588c;
+}
 * {
   margin: 0;
   padding: 0;
@@ -7,12 +10,71 @@
   font-size: 16px;
   font-weight: 400;
 }
+header {
+  background-color: var(--blue);
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  a {
+    text-decoration: none;
+    h1 {
+      color: white;
+      font-weight: 500;
+      font-size: 30px;
+      text-transform: uppercase;
+    }
+  }
+  nav a {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 300ms ease 50ms;
+    &:hover {
+      background-color: white;
+      color: var(--blue);
+    }
+  }
+}
+.intro {
+  width: 1140px;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+    align-self: flex-start;
+  }
+  .line {
+    background-color: black;
+    height: 1px;
+    margin-top: 32px;
+    width: 50%;
+  }
+}
 .filter {
   width: 1140px;
   margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  select {
+    background-color: var(--blue);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
 }
 .postSection {
-  margin: 100px auto;
+  margin: 50px auto;
   width: 1140px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -35,11 +97,17 @@
     }
     div {
       display: flex;
-      align-items: end;
-      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 8px;
       h2 {
         font-size: 20px;
         font-weight: 500;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       p {
         font-weight: 300;
@@ -55,7 +123,7 @@
     }
     .articleText {
       display: -webkit-box;
-      -webkit-line-clamp: 3; /* number of lines */
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -83,25 +151,26 @@
   background-position: center center;
   background-repeat: no-repeat;
   .overlay {
-    width: 100%;
     height: 100%;
+    padding: 0 24px;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    h1 {
+    h2 {
       color: white;
       font-size: 30px;
       text-transform: uppercase;
+      text-align: center;
     }
     .line {
       width: 20%;
       height: 1px;
       background-color: white;
     }
-    h2 {
+    h3 {
       color: white;
       font-size: 24px;
     }

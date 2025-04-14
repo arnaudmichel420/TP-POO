@@ -12,6 +12,18 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <a href="{{ path('app_home')}}">
+                <h1>Les Voyages de Martine</h1>
+            </a>
+            <nav>
+                {% if app.user %}
+                    <a href="{{ path('app_logout')}}">Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login')}}">Se connecter</a>
+                {% endif %}
+            </nav>
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>

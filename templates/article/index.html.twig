@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Martine voyage | {{post.title}}{% endblock %}
+{% block title %}Martine au | {{post.title}}{% endblock %}
 
 {% block body %}
 
 <section style="background-image:url({{post.img}})" class="heroBanner">
     <div class="overlay">
-        <h1>{{post.title}}</h1>
+        <h2>{{post.title}}</h2>
         <div class="line"> </div>
-        <h2>{% for category in post.categories %} {{category.name}} {% endfor %}</h2>
+        <h3>{% for category in post.categories %} {{category.name}} {% endfor %}</h3>
     </div>
 </section>
 <section class="article">

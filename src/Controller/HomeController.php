@@ -29,17 +29,4 @@ final class HomeController extends AbstractController
             'categories' => $categories
         ]);
     }
-    // #[Route('/', name: 'app_home_filtered')]
-    // public function filtered(CategoryRepository $categoryRepository, PostRepository $postRepository, Request $request): Response
-    // {
-    //     $category = $request->query->get('category');
-    //     dump($category);
-    //     $posts = $postRepository->findAllByCategory($category);
-    //     $categories = $categoryRepository->findAll();
-
-    //     return $this->render('home/index.html.twig', [
-    //         'posts' => $posts,
-    //         'categories' => $categories
-    //     ]);
-    // }
 }

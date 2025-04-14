@@ -41,7 +41,7 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
 
             $post = new Post();
             $post->setTitle("Titre de l'article " . $i);
-            $post->setImg($this->data['photos'][$i - 1]['src']["original"]);
+            $post->setImg($this->data['photos'][$i - 1]['src']["medium"]);
             $post->setText($i . " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum asperiores tenetur voluptas nobis blanditiis minus perferendis mollitia voluptates, eligendi nemo libero vero excepturi voluptatem numquam a sapiente quibusdam! Dolores.");
             $post->setUser($this->userRepository->findOneByEmail("user" . $i . "@test.com"));
             $post->addCategory($this->categoryRepository->findOneByName("Categorie " . $i));
