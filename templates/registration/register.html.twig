@@ -3,17 +3,25 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.name) }}
+    <h1>Veuillez créer un compte</h1>
+    <div class="input">
+        {{ form_row(registrationForm.name, {
+            label: 'Prénom'
+        }) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
         }) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Créer un compte</button>
+    </div> 
     {{ form_end(registrationForm) }}
+    <section class="needAccount">
+        <h2>Déjà un compte ?</h2>
+        <a href="{{ path('app_login')}}">Se connecter</a>
+    </section>
 {% endblock %}

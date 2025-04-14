@@ -10,6 +10,9 @@
   font-size: 16px;
   font-weight: 400;
 }
+/*
+*************HEADER
+*/
 header {
   background-color: var(--blue);
   height: 100px;
@@ -42,6 +45,9 @@ header {
     }
   }
 }
+/*
+*************HOME
+*/
 .intro {
   width: 1140px;
   margin: 50px auto;
@@ -145,6 +151,9 @@ header {
   }
 }
 
+/*
+*************Articles
+*/
 .heroBanner {
   height: 60vh;
   background-size: cover;
@@ -204,5 +213,90 @@ header {
     padding: 8px 16px;
     border-radius: 8px;
     box-shadow: inset 0 0 3px 0px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/*
+*************LOGIN
+*/
+.connected {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 100px;
+}
+form {
+  width: 700px;
+  margin: 32px auto;
+  background-color: var(--blue);
+  border-radius: 10px;
+  padding: 32px;
+  color: white;
+  h1 {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .input,
+  .input div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    label {
+      margin-bottom: -8px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    input {
+      border-radius: 10px;
+      padding: 4px 16px;
+      border: none;
+    }
+    button {
+      width: fit-content;
+      padding: 8px 16px;
+      border: 1px solid white;
+      border-radius: 10px;
+      transition: all 300ms ease 50ms;
+      background-color: white;
+      align-self: center;
+      &:hover {
+        background-color: transparent;
+        color: white;
+      }
+    }
+  }
+  .alert-danger,
+  li {
+    color: red;
+    font-weight: 600;
+  }
+}
+.needAccount {
+  width: fit-content;
+  margin: 32px auto;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  a {
+    color: white;
+    background-color: var(--blue);
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--blue);
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 300ms ease 50ms;
+    &:hover {
+      background-color: white;
+      color: var(--blue);
+    }
   }
 }
