@@ -209,10 +209,85 @@ header {
   h2 {
     font-size: 24px;
   }
+  h3 {
+    font-size: 18px;
+  }
   .comment {
     padding: 8px 16px;
     border-radius: 8px;
     box-shadow: inset 0 0 3px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .actions {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        img {
+          transition: transform 300ms ease;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+    div {
+      width: 90%;
+      .updateBtn {
+        display: none;
+        span,
+        textarea {
+          margin-top: 10px;
+        }
+        textarea {
+          width: 100%;
+        }
+        button {
+          width: fit-content;
+          color: white;
+          padding: 8px 16px;
+          border: 1px solid var(--blue);
+          border-radius: 10px;
+          transition: all 300ms ease 50ms;
+          background-color: var(--blue);
+          align-self: center;
+          margin-top: 10px;
+          &:hover {
+            background-color: transparent;
+            color: var(--blue);
+          }
+        }
+      }
+    }
+  }
+  .addComment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    input[type="submit"] {
+      width: fit-content;
+      color: white;
+      padding: 8px 16px;
+      border: 1px solid var(--blue);
+      border-radius: 10px;
+      transition: all 300ms ease 50ms;
+      background-color: var(--blue);
+      align-self: center;
+      &:hover {
+        background-color: transparent;
+        color: var(--blue);
+      }
+    }
+    textarea {
+      padding: 8px 16px;
+    }
   }
 }
 
@@ -225,7 +300,8 @@ header {
   text-align: center;
   margin-top: 100px;
 }
-form {
+.loginForm,
+.registerForm form {
   width: 700px;
   margin: 32px auto;
   background-color: var(--blue);

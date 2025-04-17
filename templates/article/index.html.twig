@@ -16,9 +16,55 @@
     <p>{{post.text}}</p>
 </section>
 <section class="comments">
-<h2>Commentaires :</h2>
+    <h2>Commentaires :</h2>
     {% for comment in post.comments %}
+        {% if app.user.id == comment.user.id %}
+        <div class="comment">
+            <div>{{comment.user.name}} le {{ comment.updatedAt|date('d/m/Y H:i') }} : 
+                <span id="commentSpan{{comment.id}}">{{comment.text}}</span>
+                <form action="{{ path('comment_update', {id: comment.id}) }}" method="post" id="commentForm{{comment.id}}" class="updateBtn">
+                    {{ form_start(editForms[comment.id]) }}
+                    {{ form_widget(editForms[comment.id].text) }}
+                    {{ form_widget(editForms[comment.id]._token) }}
+                    <button type="submit">Mettre à jour</button>
+                    {{ form_end(editForms[comment.id]) }}
+                </form>
+            </div>
+            <div class="actions">
+                <button onclick="switchToUpdate({{comment.id}})">
+                    <img src="{{ asset('picto/outil-crayon.png') }}" width="20px">
+                </button>
+                {{ form_start(deleteForms[comment.id], {'attr': {'onsubmit': 'return confirm("Are you sure?");'}}) }}
+                    <button type="submit">
+                        <img src="{{ asset('picto/poubelle-de-recyclage.png') }}" width="20px">
+                    </button>
+                {{ form_end(deleteForms[comment.id]) }}
+            </div>
+        </div>
+        {% else %}   
         <div class="comment">{{comment.user.name}} le {{ comment.updatedAt|date('d/m/Y H:i') }} : {{comment.text}}</div>
+        {% endif %}
     {% endfor %}
+    {% if app.user %}
+        {{ form_start(form, {'attr': {'class': 'addComment'}}) }}
+            {{ form_label(form.text) }}
+            {{ form_widget(form.text) }}
+            {{ form_widget(form._token) }}
+            <input type="submit" value="Envoyer">
+        {{ form_end(form) }}
+    {% else %}   
+        <p>Veuillez vous connecter pour commenter ce post.</p>
+    {% endif %}
 </section>
+
+
+<script>
+function switchToUpdate(commentId, commentText) {
+  const span = document.getElementById(`commentSpan${commentId}`);
+  const form = document.getElementById(`commentForm${commentId}`);
+
+  span.style.display = "none";
+  form.style.display = "inline";
+}
+</script>
 {% endblock %}
