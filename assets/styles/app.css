@@ -1,3 +1,378 @@
-body {
-    background-color: skyblue;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --blue: #18588c;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+/*
+*************HEADER
+*/
+header {
+  background-color: var(--blue);
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  a {
+    text-decoration: none;
+    h1 {
+      color: white;
+      font-weight: 500;
+      font-size: 30px;
+      text-transform: uppercase;
+    }
+  }
+  nav a {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 300ms ease 50ms;
+    &:hover {
+      background-color: white;
+      color: var(--blue);
+    }
+  }
+}
+/*
+*************HOME
+*/
+.intro {
+  width: 1140px;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+    align-self: flex-start;
+  }
+  .line {
+    background-color: black;
+    height: 1px;
+    margin-top: 32px;
+    width: 50%;
+  }
+}
+.filter {
+  width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  select {
+    background-color: var(--blue);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+}
+.postSection {
+  margin: 50px auto;
+  width: 1140px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  .post {
+    width: 90%;
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    gap: 16px;
+    img {
+      border-radius: 10px;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 250px;
+    }
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 8px;
+      h2 {
+        font-size: 20px;
+        font-weight: 500;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      p {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+    .line {
+      width: 70%;
+      height: 1px;
+      background-color: black;
+      margin-top: -16px;
+    }
+    .articleText {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    a {
+      background-color: #b32e2e;
+      border: 1px solid #b32e2e;
+      padding: 8px 16px;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      transition:
+        background-color 300ms ease,
+        color 300ms ease;
+      &:hover {
+        background-color: transparent;
+        color: black;
+      }
+    }
+  }
+}
+
+/*
+*************Articles
+*/
+.heroBanner {
+  height: 60vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  .overlay {
+    height: 100%;
+    padding: 0 24px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    h2 {
+      color: white;
+      font-size: 30px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .line {
+      width: 20%;
+      height: 1px;
+      background-color: white;
+    }
+    h3 {
+      color: white;
+      font-size: 24px;
+    }
+  }
+}
+.article {
+  width: 1140px;
+  margin: 50px auto;
+  h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    span {
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
+}
+.comments {
+  width: 1140px;
+  margin: 50px auto;
+  padding: 16px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  .comment {
+    padding: 8px 16px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 3px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .actions {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        img {
+          transition: transform 300ms ease;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+    div {
+      width: 90%;
+      .updateBtn {
+        display: none;
+        span,
+        textarea {
+          margin-top: 10px;
+        }
+        textarea {
+          width: 100%;
+        }
+        button {
+          width: fit-content;
+          color: white;
+          padding: 8px 16px;
+          border: 1px solid var(--blue);
+          border-radius: 10px;
+          transition: all 300ms ease 50ms;
+          background-color: var(--blue);
+          align-self: center;
+          margin-top: 10px;
+          &:hover {
+            background-color: transparent;
+            color: var(--blue);
+          }
+        }
+      }
+    }
+  }
+  .addComment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    input[type="submit"] {
+      width: fit-content;
+      color: white;
+      padding: 8px 16px;
+      border: 1px solid var(--blue);
+      border-radius: 10px;
+      transition: all 300ms ease 50ms;
+      background-color: var(--blue);
+      align-self: center;
+      &:hover {
+        background-color: transparent;
+        color: var(--blue);
+      }
+    }
+    textarea {
+      padding: 8px 16px;
+    }
+  }
+}
+
+/*
+*************LOGIN
+*/
+.connected {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 100px;
+}
+.loginForm,
+.registerForm form {
+  width: 700px;
+  margin: 32px auto;
+  background-color: var(--blue);
+  border-radius: 10px;
+  padding: 32px;
+  color: white;
+  h1 {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .input,
+  .input div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    label {
+      margin-bottom: -8px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    input {
+      border-radius: 10px;
+      padding: 4px 16px;
+      border: none;
+    }
+    button {
+      width: fit-content;
+      padding: 8px 16px;
+      border: 1px solid white;
+      border-radius: 10px;
+      transition: all 300ms ease 50ms;
+      background-color: white;
+      align-self: center;
+      &:hover {
+        background-color: transparent;
+        color: white;
+      }
+    }
+  }
+  .alert-danger,
+  li {
+    color: red;
+    font-weight: 600;
+  }
+}
+.needAccount {
+  width: fit-content;
+  margin: 32px auto;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  a {
+    color: white;
+    background-color: var(--blue);
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--blue);
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 300ms ease 50ms;
+    &:hover {
+      background-color: white;
+      color: var(--blue);
+    }
+  }
 }
