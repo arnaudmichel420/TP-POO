@@ -19,18 +19,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups('post:read')]
+    #[Groups(['post:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
-    #[Groups('post:read')]
+    #[Groups(['post:read'])]
     private ?string $email = null;
 
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
-    #[Groups('post:read')]
+    #[Groups(['post:read'])]
     private array $roles = [];
 
     /**
@@ -58,7 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups('post:read')]
+    #[Groups(['post:read'])]
     private ?string $name = null;
 
     public function getId(): ?int
