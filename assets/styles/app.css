@@ -376,3 +376,95 @@ header {
     }
   }
 }
+
+/********************************ADMIN*/
+.adminHeader {
+  margin: 50px auto;
+  width: fit-content;
+  a {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--blue);
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--blue);
+    transition: all 300ms ease 50ms;
+    &:hover {
+      background-color: transparent;
+      color: var(--blue);
+    }
+  }
+}
+.adminPostList {
+  margin: 50px auto;
+  width: 1140px;
+  display: flex;
+  justify-content: center;
+  table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    tr,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th,
+    td {
+      padding: 8px 16px;
+    }
+    th {
+      background-color: var(--blue);
+      color: white;
+      font-weight: 500;
+    }
+    .actions {
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      button,
+      a {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        img {
+          transition: transform 300ms ease;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+.adminCreateForm {
+  width: 1140px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      label {
+        margin-right: 8px;
+      }
+    }
+  }
+}

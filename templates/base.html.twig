@@ -17,7 +17,11 @@
                 <h1>Les Voyages de Martine</h1>
             </a>
             <nav>
-                {% if app.user %}
+                {% if app.request.attributes.get('_route') == 'app_admin' %}
+                    <a href="{{ path('app_logout')}}">Se déconnecter</a>
+                {% elseif app.user and "ROLE_ADMIN" in app.user.roles %}  
+                    <a href="{{ path('app_admin')}}">Administration</a>
+                {% elseif app.user %}
                     <a href="{{ path('app_logout')}}">Se déconnecter</a>
                 {% else %}
                     <a href="{{ path('app_login')}}">Se connecter</a>
