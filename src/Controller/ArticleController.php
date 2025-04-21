@@ -29,7 +29,7 @@ final class ArticleController extends AbstractController
         $editForms = [];
         $deleteForms = [];
         foreach ($post->getComments() as $commentToUpdate) {
-            if ($commentToUpdate->getUser() === $this->getUser()) {
+            if ($commentToUpdate->getUser() === $this->getUser() || in_array("ROLE_ADMIN", $this->getUser()->getRoles())) {
                 $editForms[$commentToUpdate->getId()] = $this->createForm(CommentType::class, $commentToUpdate)->createView();
                 $deleteForms[$commentToUpdate->getId()] = $this->createFormBuilder()
                     ->setAction($this->generateUrl('comment_delete', ['id' => $commentToUpdate->getId()]))
