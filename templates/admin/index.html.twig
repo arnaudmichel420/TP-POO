@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+
+<section class="adminHeader">
+    <a href="{{ path('app_admin_create') }}">Ajouter un article</a>
+</section>
+
+<section class="adminPostList">
+    <table>
+        <tr>
+            <th>Date de modification</th>
+            <th>Auteur</th>
+            <th>Titre</th>
+            <th>Aperçu</th>
+            <th>Actions</th>
+        </tr>
+        {% for post in posts %}
+            <tr>
+                <td>{{post.updatedAt|date('d/m/Y H:i')}}</td>
+                <td>{{post.user.name}}</td>
+                <td>{{post.title}}</td>
+                <td>{{ post.text|u.truncate(50, '...') }}</td>
+                <td>
+                    <div class="actions">
+                        <a href="{{ path('app_article', { id: post.id }) }}">
+                            <img src="{{ asset('picto/eye.png') }}" width="24px">
+                        </a>
+                        <a href="{{ path('app_admin_update', { id: post.id }) }}">
+                            <img src="{{ asset('picto/outil-crayon.png') }}" width="20px">
+                        </a>
+                        {{ form_start(deleteForms[post.id], {'attr': {'onsubmit': 'return confirm("Are you sure?");'}}) }}
+                            <button type="submit">
+                                <img src="{{ asset('picto/poubelle-de-recyclage.png') }}" width="20px">
+                            </button>
+                        {{ form_end(deleteForms[post.id]) }}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+
+{% endblock %}
+
+                
+                
+            
